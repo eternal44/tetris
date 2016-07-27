@@ -1,4 +1,10 @@
-// board
+// #########
+// # BOARD #
+// #########
+
+// TODO:
+//   persist shapes once they reach the bottom or previous shape
+
 var bw = 300;
 var bh = 660;
 var p = 10;
@@ -24,18 +30,24 @@ function drawBoard(){
 
 drawBoard();
 
-// shape
+// ##########
+// # SHAPES #
+// ##########
+
+// TODO: 
+//   instantiate shapes from class
+//   randomly select from them
+
 var xPosition = 130
 var yPosition = -20
 var w = 60
 var h = 60
 
+// vector variables to make shape 'fall' to the bottom of the board
 var vx = 0
 var vy = 30
 
-function stop() {
-}
-
+// renders shape on board
 function draw() {
   context.clearRect(0,0,canvas.width, canvas.height);
 
@@ -50,14 +62,13 @@ var dropShape = setInterval(function() {
 
   if(yPosition > 600)
     clearInterval(dropShape)
-
 }, 100)
 
 function moveShape(e) {
   var code = e.keyCode
   switch (code) {
-    case 37: xPosition -= 30; break; //Left key
-    case 39: xPosition += 30; break; //Right key
+    case 37: xPosition -= 30; break; // left key
+    case 39: xPosition += 30; break; // right key
   }
 }
 
