@@ -53,3 +53,11 @@ var dropShape = setInterval(function() {
 
 }, 100)
 
+function moveShape(e) {
+  var code = e.keyCode
+  switch (code) {
+    case 37: xPosition -= 30; break; //Left key
+    case 39: xPosition += 30; break; //Right key
+  }
+}
+
