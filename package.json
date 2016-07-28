@@ -1,0 +1,17 @@
+{
+  "name": "cruise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "cruise": "tetris.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Youn <jamesyoun710@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "tape": "4.6.0"
+  }
+}
