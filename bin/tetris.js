@@ -62,7 +62,7 @@ var dropShape = setInterval(function() {
 
   if(yPosition > 600)
     clearInterval(dropShape)
-}, 100)
+}, 1000)
 
 function moveShape(e) {
   var code = e.keyCode
