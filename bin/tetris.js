@@ -48,7 +48,7 @@ var vx = 0
 var vy = 30
 
 // renders shape on board
-function draw() {
+function draw(vx, vy) {
   context.clearRect(0,0,canvas.width, canvas.height);
 
   xPosition += vx
@@ -57,18 +57,36 @@ function draw() {
   context.fillRect(xPosition,yPosition,w,h)
 }
 
-var dropShape = setInterval(function() {
-  draw()
+// reduce the time interval to prevent the key delay
+var interval = 100
+var step = 10
+var dropShape = setInterval(render(), interval)
 
-  if(yPosition > 600)
-    clearInterval(dropShape)
-}, 1000)
+function render() {
+  var _step = 0
+  return function () {
+    var _vx = 0, _vy = 0
+    if (++_step >= step) {
+      _vx = vx
+      _vy = vy
+    }
+    window.requestAnimationFrame(function () {
+      draw(_vx, _vy)
+
+      if(yPosition > 600)
+        clearInterval(dropShape)
+
+      if (_step >= step)
+        _step = 0
+    })
+  }
+}
 
 function moveShape(e) {
   var code = e.keyCode
   switch (code) {
-    case 37: xPosition -= 30; break; // left key
-    case 39: xPosition += 30; break; // right key
+    case 37: xPosition -= (xPosition > p + 0.5) ? 30 : 0; break; // left key
+    case 39: xPosition += (xPosition < p + bw - w) ? 30 : 0; break; // right key
   }
 }
 
